@@ -4,29 +4,70 @@
 [github]
   user   = robertjkeck2
 [alias]
+  # Add files individually: git add howdy.py
   a      = add
+
+  # Add all files: git add .
   aa     = add .
-  aacm   = "!f() { git add . && git commit -m $1; }; f"
+
+  # Add all files and commit with message: git add . && git commit -m "howdy"
+  aacm   = commit -am
+  
+  # Get all branches: git branch
   b      = branch
+
+  # Delete branch: git branch -D bad-branch
   bd     = branch -D
+
+  # Clone a remote repo: git clone https://github.com/robertjkeck2/dotfiles.git
   c      = clone
-  ca     = commit -a
-  cam    = commit -am
+
+  # Commit with a message: git commit -m "howdy"
   cm     = commit -m
+
+  # Checkout branch and create if does not exist: git checkout good-branch OR git checkout -b good-branch
   co     = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+  # Checkout a branch: git checkout -b good-branch
   cob    = checkout -b
+
+  # Diff utility between current and previous commit
   d      = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  
+  # Fetch and prune
   fp     = fetch --prune --all
+
+  # Log on one line
   l      = log --oneline --decorate --graph
+
+  # Log with pretty print
   lt     = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
+  
+  # Push origin to inputted branch: git push origin good-branch
   psho   = push origin
+
+  # Push origin to current branch: git push origin current-branch
   pshob  = !"git push origin $(git symbolic-ref --short HEAD)"
+
+  # Push origin to master: git push origin master
   pshom  = push origin master
+
+  # Pull origin from inputted branch: git pull origin good-branch
   pllo   = pull origin
+
+  # Pull origin from current branch: git pull origin current-branch
   pllob  = !"git pull origin $(git symbolic-ref --short HEAD)"
+
+  # Pull origin from master: git pull origin master
   pllom  = pull origin master
+
+  # Pull origin from staging: git pull origin staging
   pllos  = pull origin staging
+
+  # Status with full output: git status
   st     = status
+
+  # Status with abbreviated output: git status -s
   s      = status s-
 
 [apply]
