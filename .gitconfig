@@ -1,0 +1,89 @@
+[user]
+  name   = John Keck
+  email  = robertjkeck2@gmail.com
+[github]
+  user   = robertjkeck2
+[alias]
+  a      = add
+  aa     = add .
+  aacm   = "!f() { git add . && git commit -m $1; }; f"
+  b      = branch
+  bd     = branch -D
+  c      = clone
+  ca     = commit -a
+  cam    = commit -am
+  cm     = commit -m
+  co     = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  cob    = checkout -b
+  d      = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  fp     = fetch --prune --all
+  l      = log --oneline --decorate --graph
+  lt     = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
+  psho   = push origin
+  pshob  = "!f() {declare branch=\"$(git symbolic-ref --short HEAD)\"; git push origin $branch}; f"
+  pshom  = push origin master
+  pllo   = pull origin
+  pllob  = "!f() {declare branch=\"$(git symbolic-ref --short HEAD)\"; git pull origin $branch}; f"
+  pllom  = pull origin master
+  pllos  = pull origin staging
+  st     = status
+  s      = status -s
+
+[apply]
+	whitespace = fix
+
+[core]
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	trustctime = false
+	precomposeunicode = false
+	untrackedCache = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[diff]
+	renames = copies
+
+[diff "bin"]
+	textconv = hexdump -v -C
+
+[help]
+	autocorrect = 1
+
+[merge]
+	log = true
+
+[push]
+	default = simple
+	followTags = true
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+	insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"
